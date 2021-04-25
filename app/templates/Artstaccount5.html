@@ -1,0 +1,57 @@
+{% include 'header.html' %}
+<h1>Insert Query</h1>
+<div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Post</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {% if messages %}
+                {% for i in messages %}
+                  <div class="alert alert-success" style="margin-top: 30px;">{{i}}</div>
+                {% endfor %}
+              {% endif %}
+              <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Firstname</label>
+                    <input type="text" class="form-control" name="Firstname">
+                  </div>
+                     <div class="form-group">
+                    <label>Lastname</label>
+                    <input type="text" class="form-control" name="Lasttname">
+                  </div>
+                  <div class="form-group">
+                    <label>emailid</label>
+                    <input type="text" class="form-control" name="emailid">
+                  </div>
+                 
+                    </div>
+                     <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" name="Uname">
+                  </div>
+                     <div class="form-group">
+                    <label>Password</label>
+                    <input type="Password" class="form-control" name="Pword">
+                  </div>
+                  <div class="form-group">
+                    <label>Picture</label>
+                    <input type="file" class="form-control" name="pic">
+                  </div>
+                    
+                  </div>
+                  
+                  <div class="form-group">
+                    <label>Content</label>
+                    <textarea name="content" class="form-control"></textarea>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <input type="submit" class="btn btn-primary" value="Create Account">
+                </div>
+              </form>
+            </div>
+{% include 'footer.html' %}

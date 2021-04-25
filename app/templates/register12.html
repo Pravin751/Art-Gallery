@@ -1,0 +1,63 @@
+{% load static %}
+    
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %} " rel="stylesheet">
+  <script src="{% static 'jquery.js' %}"></script>
+   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
+    
+<h1>Sign Up Here</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 px-0"  style="background:url('/static/img/gallery.jpg');background-size:100% 100%;">
+            <div  class="h-400" style="background:rgba(0,0,0,0.5)"></div>
+        </div>
+        <div class="col-md-6">
+            
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="">First Name</label>
+                            <input type="text" class="form-control" placeholder="First Name" name="first">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Last Name</label>
+                            <input type="text" class="form-control" placeholder="Last Name" name="last">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p id="result"></p>
+                </div>
+                <div class="form-group">
+                    <label for="">Username</label>
+                    <input type="text" class="form-control" placeholder="Enter Username" name="uname" id="username" onkeyup="checkuser()">
+                </div>
+                <div class="form-group">
+                    <label for="">Password</label>
+                    <input type="password" class="form-control" placeholder="Enter Password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="">Email</label>
+                    <input type="email" class="form-control" placeholder="Enter Email Address" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="">Contact Number</label>
+                    <input type="number" class="form-control" placeholder="Enter Mobile Number" name="contact">
+                </div>
+                <div class="form-group">
+                    <label for="">User Type</label>
+                    <select name="utype" class="form-control">
+                        <option value="cust">I am Customer</option>
+                        <option value="sell">I am Seller</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Sign Up" class="btn btn-success" id="submitbtn">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

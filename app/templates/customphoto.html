@@ -1,0 +1,102 @@
+
+
+
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+
+ <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %} " rel="stylesheet" type="text/css">
+  <link href="{% static 'https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i' %}"rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.min.css' %} " rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css'%}">
+
+ 
+<style type="text/css">
+  
+  .ftco-navbar-light
+  {
+    background: #000 !important;
+
+
+   
+   }
+   
+     #cover{
+    background:url('/static/img/gallery.jpg');
+    background-size: cover;
+   }
+   
+
+  
+
+
+
+ </style>
+ 
+  <body id="cover">
+   
+  
+    
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row no-gutters justify-content-center " style="padding-bottom: 0;">
+          <div class="col-md-7 text-center heading-section ftco-animate" style="padding-top: 30px;">
+            
+          </div>
+        </div>
+    
+        <div class="row d-flex">
+        <center>
+          <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
+              {% if messages %}
+              {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+              {% endfor %}
+            {% endif %}
+            <form action=""  method="post">{% csrf_token %}
+              <h2 style="color: black">Upload photo</h2>
+              <div class="row">
+      
+                    <label for="">User Name</label>
+                    <input type="text" class="form-control" name="uname"  value="{{request.session.username}}">
+                    
+                    
+                      <label for="">Upload photo</label>
+                    <input type="file" class="form-control" name="photo"  required="required">
+                    <label for="">Image height</label>
+                    <input type="number" class="form-control" name="height"  required="required">
+                    <label for="">Image Width</label>
+                    <input type="number" class="form-control" name="width" required="required">
+                    
+                     <label >Category</label>
+                    <div class="input-group">
+                        <select name="category" class="form-control">
+                          <option value="">Select</option>
+                          {% for i in category_detail %}
+                            <option value="{{i.id}}">{{i.cat_name}}</option>
+                          {% endfor %}
+                        </select>
+                        
+                    </div>
+                    
+                   
+                <div class="col-md-12 mt-3">
+                  <div class="form-group">
+                    <input type="submit" value="Add photo" class="btn btn-info btn-lg">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </center>
+    </section>
+  
+  </body>
+  </html>

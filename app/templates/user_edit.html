@@ -1,0 +1,58 @@
+{% load static %}
+{% include 'header.html' %}
+<h1>Update Query</h1>
+<div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Update User</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {% if messages %}
+              	{% for i in messages %}
+              		<div class="alert alert-success" style="margin-top: 30px;">{{i}}</div>
+              	{% endfor %}
+              {% endif %}
+             
+
+              
+            <div class="text-center">
+                 {% for i in user %}
+                <img src="/media/post/{{i.picture}}" style="height:150px;width:150px;border-radius:50%">
+                
+              </div>
+           
+              <form method="post">{% csrf_token %}
+                
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" name="fname" value="{{i.Firstname}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" name="lname" value="{{i.Lastname}}">
+                  </div>
+                  <div class="form-group">
+                    <label >Email Id</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" name="email" value="{{i.emailid}}">
+                        
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label >Profile</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" name="image" >
+                        
+                    </div>
+                  </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <input type="submit" class="btn btn-primary" value="Update User">
+                </div>
+                
+              </form>
+            {% endfor %}
+{% include 'footer.html' %}

@@ -1,0 +1,51 @@
+   {% include 'header.html' %}
+
+
+<div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Responsive Hover Table</h3>
+
+               
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Sno</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Email Id</th>
+                      <th>Username</th>
+                      <th>Password</th>
+                      
+                      <th>Date</th>
+                      <th>Option</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  	{% for i in user %}
+	                    <tr>
+	                     <td>{{forloop.counter}}</td>
+	                      <td>{{i.Firstname}}</td>
+	                      <td>{{i.Lastname}}</td>
+	                      <td>{{i.emailid}}</td>
+	                      <td>{{i.username}}</td>
+	                      <td>{{i.password}}</td>
+                       
+	                      <td>{{i.date}}</td>
+                        <td><a href="{% url 'user_edit' pk=i.id %}"  class="btn btn-success btn-xs"><i class="fa fa-edit"></i></a> <a href="{% url 'user_delete' a=i.id %}"  class="btn btn-danger btn-xs" onclick="confirm('Are you sure want to delete?')"><i class="fa fa-trash"></i></a></td>
+	                    </tr>
+                   {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        
+        <!-- /.row -

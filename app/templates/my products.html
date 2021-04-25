@@ -1,0 +1,70 @@
+{% load static %}
+{% include 'header.html' %}
+<style type="text/css">
+    th{
+        color: black;
+
+    }
+    td{
+        color:black;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <h2 style="color:black"class="alert alert-primary"> My Products ({{products|length}})</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product ID</th>
+                        <th>Product Image</th>
+                        <th>Product Name</th>
+                        <th>Seller Name</th>
+                        <th>Product Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in products %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td><img src="/media/{{i.image}}" style="height:50px;width:80px;"></td>
+                            <td>{{i.productname}}</td>
+                            <td>{{i.user_id.Firstname}} {{i.user_id.Lastname}}</td>
+                            <td>
+                                <button class="btn btn-success" data-toggle="modal" data-target="#m{{i.id}}"><i class="fa fa-eye"></i> view</button>
+                                <a href="{% url 'update_product' %}?pid={{i.id}}" class="btn btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                                <a href="{% url 'delete_product' %}?pid={{i.id}}" class="btn btn-danger"><i class="fa fa-trash"></i> Delete</a>
+                            </td>
+                        </tr>
+
+                        <div class="modal fade" id="m{{i.id}}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4>Product Details</h4>
+                                        <button class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="/media/{{i.image}}" alt="" height="200" width="100%">
+                                        <h2>
+                                            <a href="{% url 'Singleproduct' jk=i.id %}">{{i.productname}}</a>
+                                        </h2>
+                                        <p>({{i.Category.cat_name}})</p>
+                                        <p style="font-size:30px;">
+                                           
+                                            <strong> &#8377;{{i.saleprice}}</strong>
+                                        </p>
+                                        <p>{{i.content}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="{% url 'Singleproduct' jk=i.id %}" class="btn btn-success">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

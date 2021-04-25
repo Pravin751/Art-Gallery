@@ -1,0 +1,39 @@
+{% include 'header.html' %}
+
+        <center>
+          
+                {%if abcd %}
+                <h1 style="color: black">Total ({{products|length}}) products found</h1>
+                {% else %}
+                <h1 style="color: black"> Products ({{products|length}})</h1>
+                {% endif %}</center>
+        
+<div class="container-fluid">
+        <div class="row py-4">
+            {% for i in products %}
+                <div class="col-md-4 p-5">
+                    <div style="border:1px solid gray" class="p-1 hover">
+                        <a href="{% url 'Singleproduct' jk=i.id %}"> <img src="/media/{{i.image}}" height="200" width="100%"></a>
+                        
+                        
+                        
+                            <h4 style="color:black">Product price: <span style="color: red"><del>&#8377; {{i.productprice}}</del></span></h4>
+                            <h4 style="color: black">Offer price:<span style="color: blue">&#8377; {{i.saleprice}}</span><h4>
+                        
+                      
+                       
+                        <form action="{% url 'cart' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" value="{{i.id}}" name="pid">
+                            <input type="hidden" value="1" name="qty">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add To Cart
+                            </button>
+                        </form>
+                    </div>
+                </div>
+             {% endfor %}
+        
+
+ 

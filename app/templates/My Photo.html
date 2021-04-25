@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+<div class="container-fluid">
+        <div class="row py-4">
+            
+                
+{% for i in photo %}
+<div class="col-md-4 p-5">
+<div style="border:1px solid gray" class="p-1 hover">
+<img src="/media/{{i.photo}}" height="200" width="100%">
+ <h4 style="color: black"> Price:<span style="color: blue">&#8377; {{i.Amount}}</span><h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+                      
+{% endfor %}
+

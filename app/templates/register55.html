@@ -1,0 +1,123 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register form</title>
+    <style >
+        body{
+            margin:0;
+            padding: 0;
+            background-image: url({% static 'images/gallery.jpg'%});
+            background-size: cover;
+            color:red;
+            
+        }
+         .ftco-navbar-light
+  {
+    background: #000 !important;
+  }
+        .container{
+            top:50%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+
+        }
+        .card{
+            padding:60px 40px 50px 40px;
+            background:rgb(50,50,50);
+            border-radius: 30px;
+
+        }
+        #name{
+            width: 200px;
+            border:none;
+            background: transparent;
+            border-bottom: 1px solid white;
+            padding:6px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        #button{
+            border-radius:20px;
+            padding: 10px 20px;
+            background: dodgerblue;
+            color: white;
+            margin-top: 20px;
+            border: none;
+            outline: none;
+            margin-left: 30px;
+
+
+
+        }
+        #button:hover{
+            background-color: greenyellow;
+            color: black;
+            cursor:pointer;
+        }
+        a{
+            font-size: 13px;
+            color:green;
+
+        }
+        img{
+            border-radius: : 50%;
+            position: absolute;
+            margin-left: 115px;
+            margin-top: -40px;
+
+        }
+        </body>
+    </style>
+</head>
+<body> 
+    <section class="ftco-section">
+      <div class="container">
+        
+        <div class="row d-flex">
+        <center>
+          <div class="col-md-8 ftco-animate makereservation p-5 bg-light">
+              {% if messages %}
+              {% for i in messages %}
+                <div class="alert alert-success">{{i}}</div>
+              {% endfor %}
+            {% endif %}
+            <form  method="post">{% csrf_token %}
+              
+
+    <center><h1>Register form</h1></center>
+    
+    <div class="container">
+        
+        <div class="card">
+             <input type="text" placeholder="Firstname" name="fname" id="name"><br>
+
+             <input type="text" placeholder="Lastname" name="lname" id="name"><br>
+
+             <input type="text" placeholder="email-id" name="emailid" id="name"><br>
+
+            <input type="text" placeholder="Username"  name="username" id="name"><br>
+           
+            <input type="password" placeholder="password" name="password" id="name"><br>
+            <input type="date" placeholder="date" name="date" id="name"><br>
+            
+            
+
+            
+            <input type="submit" value="create a account" id="button">
+
+            <p>Already member</p>
+            <a href="login.php">Just login</a>
+        </div>
+    </div>
+</form>
+</div>
+</center>
+</div>
+</div>
+</section>
+
+</body>
+</html>

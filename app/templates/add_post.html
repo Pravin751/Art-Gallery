@@ -1,0 +1,49 @@
+{% include 'header.html' %}
+<h1>Insert Query</h1>
+<div class="card card-success">
+              <div class="card-header">
+                <h3 class="card-title">Post</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {% if messages %}
+                {% for i in messages %}
+                  <div class="alert alert-success" style="margin-top: 30px;">{{i}}</div>
+                {% endfor %}
+              {% endif %}
+              <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" name="title">
+                  </div>
+                  <div class="form-group">
+                    <label>Picture</label>
+                    <input type="file" class="form-control" name="pic">
+                  </div>
+                    <div class="form-group">
+                    <label >User</label>
+                    <div class="input-group">
+                        <select name="user_detail" class="form-control">
+                          <option value="">Select</option>
+                          {% for i in user_name %}
+                            <option value="{{i.id}}">{{i.first_name}}</option>
+                          {% endfor %}
+                        </select>
+                        
+                    </div>
+                  </div>
+                  <input type="hidden" name="user_detail" value="{{request.session.user_id}}">
+                  <div class="form-group">
+                    <label>Content</label>
+                    <textarea name="content" class="form-control"></textarea>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <input type="submit" class="btn btn-primary" value="Create Post">
+                </div>
+              </form>
+            </div>
+{% include 'footer.html' %}

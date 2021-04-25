@@ -1,0 +1,40 @@
+{% include 'header.html' %}
+{% load static %}
+<style>
+    .bg-img{
+    background-color: red;
+}
+.abcd:hover{
+    box-shadow: 0px 0px 10px gray;padding: 10px;
+
+}
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 bg-img py-5 text-center text-light">
+            <h1>Dashboard &gt; My customers({{customers|length}})</h1>
+            <h3>Total orders:{{times}}</h3>
+        </div>
+        {% for i in customers %}
+        <div class="col-md-4 p-2">
+            <div class="card abcd">
+                <div class="card-header">
+                    <img src="/media/post/{{i.picture}}" style="height: 200px;width:100%;" >
+                </div>
+                <div  class="card-body">
+                    <h4>{{i.Firstname}} {{i.Lastname}}</h4>
+
+                    <p><i class="fa fa-user"></i>{{i.username}}</p>
+                   <p><em>{{i.emailid}}</em></p>
+                    {% endfor %}
+                     {% for i in Products %}
+                     <h4>Productname:{{i.product.productname}}</h4>
+                     {% endfor %}
+
+                </div>
+                </div>
+                </div>
+               
+                </div>
+                </div>
